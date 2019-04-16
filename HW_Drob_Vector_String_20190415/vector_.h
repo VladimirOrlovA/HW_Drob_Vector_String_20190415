@@ -18,5 +18,14 @@ public:
 	bool empty();
 	int getElement(int pos);
 	void print();
+	
+	// методы операций над дробями
+	vector_ operator+=(const vector_ &b);
+	vector_ operator-=(const vector_ & b);
+	vector_ operator*=(const vector_ & b);
+	vector_ operator/=(const vector_ & b);
+	vector_ & operator++();
+	vector_ operator++(int);
+
 	~vector_();
 };

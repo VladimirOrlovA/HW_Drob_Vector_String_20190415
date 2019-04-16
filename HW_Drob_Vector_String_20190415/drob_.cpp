@@ -196,20 +196,27 @@ bool operator<=(const drob_ & a, const drob_ & b)
 // гл.функция оператора вывода "<<" для типа данных drob_ 
 ostream & operator<<(ostream & os, const drob_ & c)
 {
+	
 	os << c.getX();
 	cout << "/";
 	os << c.getY();
+	cout << "\n\n";
 	return os;
 }
 
 // гл.функция оператора ввода ">>" для типа данных drob_
 istream & operator>>(istream & is, drob_ & c)
 {
+	cout << "\n ";
 	int x, y;
+	cout << "\nEnter value numerator -> ";
 	cin >> x;
+	cout << "\t /";
 	c.setX(x);
+	cout << "\nEnter value denumerator -> ";
 	cin >> y;
 	c.setY(y);
+	cout << "\n";
 
 	return is;
 }

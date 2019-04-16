@@ -13,6 +13,10 @@ void main()
 	vector_ vec(5, 5);
 	vec.print();
 
+	cout << dr;
+	cin >> dr;
+	cout << dr;
+
 
 	system("pause");
 }
