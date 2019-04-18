@@ -12,7 +12,7 @@ vector_::vector_(int size, int val)
 	this->size = size;
 	this->arr = new int[this->size];
 	for (int i = 0; i < this->size; i++)
-		this->arr[i] = val + i;
+		this->arr[i] = val;
 }
 
 vector_::vector_(const vector_ & obj)		// конструктор копирования
@@ -107,9 +107,10 @@ void vector_::clear()
 	}
 }
 
-int vector_::getSize()
+
+int vector_::getSize() const
 {
-	cout << "Array size is " << this->size << "\n\n";
+	//cout << "Array size is " << this->size << "\n\n";
 	return this->size;
 }
 
@@ -120,7 +121,7 @@ bool vector_::empty()
 	return false;
 }
 
-int vector_::getElement(int pos)		// метод получения заданного значения элемента в массиве
+int vector_::getElement(int pos) const		// метод получения заданного значения элемента в массиве
 {
 	if (pos > this->size)
 	{
@@ -129,10 +130,52 @@ int vector_::getElement(int pos)		// метод получения заданного значения элемента
 	}
 	else
 	{
-		cout << "Getting the value of a given element position: pos " << pos << " = value " << this->arr[pos] << "\n\n";
+		//cout << "Getting the value of a given element position: pos " << pos << " = value " << this->arr[pos] << "\n\n";
 		return this->arr[pos];
 	}
 
+}
+
+// сеттер 
+void vector_::setElement()
+{
+	if (this->arr == nullptr)
+	{
+		cout << "\nThis array is clear \n\n";
+		cout << "Set a new array size -> ";
+		cin >> this->size;
+		this->arr = new int[this->size];
+
+		for (size_t i = 0; i < this->size; i++)
+		{
+			cout << "\nEnter " << i << " element -> ";
+			cin >> this->arr[i];
+		}
+		cout << " - All array elements values are set -  \n";
+	}
+	else
+	{
+		cout << "\nThis array size is " << this->size << " elements \n\n";
+		
+		cout << "\nDo You want to rezize the array? 1/0 -> ";
+		int choice;
+		cin >> choice;
+
+		if (choice == 1)
+		{
+			cout << "Set new array size -> ";
+			cin >> this->size;
+			delete[] this->arr;
+			this->arr = new int[this->size];
+		}
+
+		for (size_t i = 0; i < this->size; i++)
+		{
+			cout << "\nEnter new value of " << i << " element -> ";
+			cin >> this->arr[i];
+		}
+		cout << "\n - All array elements values are set - \n";
+	}
 }
 
 void vector_::print()
@@ -151,7 +194,26 @@ void vector_::print()
 	cout << endl;
 }
 
+// метод - prefix incriment
+vector_ & vector_::operator++()
+{
+	for (size_t i = 0; i < this->size; i++)
+	{
+		this->arr[i]++;
+	}
+	return *this;
+}
 
+// метод - postfix incriment
+vector_ vector_::operator++(int)
+{
+	vector_ c = *this;
+	for (size_t i = 0; i < size; i++)
+	{
+		this->arr[i] += 1;
+	}
+	return c;
+}
 
 vector_::~vector_()
 {
@@ -159,4 +221,37 @@ vector_::~vector_()
 		delete[]this->arr;
 		this->size = 0;
 	}
+}
+
+// гл.функция оператора вывода "<<" для типа данных vector_ 
+ostream & operator<<(ostream & os, const vector_ & vec)
+{
+	cout << "\n";
+	for (size_t i = 0; i < vec.getSize(); i++)
+	{
+		os << vec.getElement(i);
+	}
+	cout << "\n\n";
+	return os;
+}
+
+// гл.функция оператора ввода ">>" для типа данных vector_ 
+istream & operator>>(istream & is, vector_ & vec)
+{
+	vec.setElement();
+	return is;
+}
+
+bool operator==(const vector_ & L, const vector_ & R)
+{
+	if (L.size != R.size)
+		return false;
+
+	for (size_t i = 0; i < L.size; i++)
+		{
+			if (L.arr[i] != R.arr[i])
+				return false;
+		}
+
+	return true;
 }

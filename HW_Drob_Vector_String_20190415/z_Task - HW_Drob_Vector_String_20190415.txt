@@ -4,16 +4,14 @@ ok - --
 ok - cout
 ok - cin
 
-
 Для вектора
-++//все элементы увеличиваются на 1
-cout
-cin
-==
+ok - ++//все элементы увеличиваются на 1
+ok - cout
+ok - cin
+ok - ==
 
 Для string_
-cout
-cin
-==
-!=
-
+ok - cout
+ok - cin
+ok - ==
+ok - !=
