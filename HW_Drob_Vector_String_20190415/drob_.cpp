@@ -24,10 +24,15 @@ void drob_::setX(int x)
 // сеттер для параметра y
 void drob_::setY(int y)
 {
-	if (y != 0)
-		this->y = y;
-	else
+	try {
+		if (y == 0)
+			throw exception(" Division by zero denied");
+	}
+	catch (exception&e) {
 		this->y = 1;
+		cout << "Error: " << e.what() << "\nSet default value y = 1 \n\n";
+	}
+	this->y = y;
 }
 
 // геттер для параметра x, константный, чтобы исключить изменение параметра x

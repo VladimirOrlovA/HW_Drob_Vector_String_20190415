@@ -4,9 +4,10 @@
 
 void main()
 {
-	/*drob_ dr(3, 4);
+	drob_ dr(3, 0);
 	dr.print();
-
+	dr.getFraction();
+	/*
 	string_ str("Hello World");
 	str.print();
 
@@ -36,10 +37,10 @@ void main()
 		cout << "Arrays are equal\n";
 	else cout << "Arrays are not equal\n";*/
 
-	string_ c("Hello");
+	/*string_ c("Hello");
 	cout << "Source string : " << c;
 	cin >> c;
-	cout << "String after change: " << c << endl;
+	cout << "String after change: " << c << endl;*/
 
 	//str1.push_back('z');
 	//str1.print();
